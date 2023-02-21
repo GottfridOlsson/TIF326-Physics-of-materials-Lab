@@ -1,0 +1,2 @@
+Delta_sigma_bend_dislocation_Orowan: -1.10e-09 MPa
+Delta_sigma_shear_dislocation:       4.66e-13 MPa
