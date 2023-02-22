@@ -49,6 +49,7 @@ for direction in ["CD", "MD"]:
         ax.set_ylabel("Intensity, $I$ (A.U.)")
         ax.grid()
         ax.legend()
+        ax.set_ylim(-0.1, 0.4)
 
         fig.tight_layout()
         fig.savefig(f"SAXS HDPE/output/{direction}_{deforming}_SAXS.pdf")
