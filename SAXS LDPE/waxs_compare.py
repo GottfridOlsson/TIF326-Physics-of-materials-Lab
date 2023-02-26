@@ -24,7 +24,6 @@ for direction in ["CD", "MD"]:
     I_deformed *= np.min(I_undeformed) / np.min(I_deformed)
 
     ax = fig.add_subplot(1,1,1)
-    ax.set_title(f"LDPE, {direction}")
     ax.plot(q_undeformed, I_undeformed, label=f"LDPE, {direction}, Undeformed")
     ax.plot(q_deformed, I_deformed, label=f"LDPE, {direction}, Deformed")
 
@@ -91,7 +90,7 @@ for direction in ["CD", "MD"]:
             alpha=0.5)
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
-    ax.set_ylabel("Intensity, $I$ (A.U.)")
+    ax.set_ylabel("Intensity, (arb. unit)")
     ax.legend()
     ax.set_ylim(-0.005, 0.06)
     ax.set_xlim(1.4, 2.1)

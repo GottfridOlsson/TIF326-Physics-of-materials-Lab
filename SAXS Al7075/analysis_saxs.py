@@ -53,7 +53,7 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
     print(f"{sample}: d = {0.1*d:.1f} nm")
 
     ax = fig.add_subplot(3,3,(4,9))
-    ax.plot(0, 0, label="Reference, no aging")
+    ax.plot(0, 0, label="Al7075, no aging")
     ax.plot(q, I_sub, label="Al7075, aged 160C 2h")
     ax.plot(q_fit, I_gauss, "k--", label="Fitted curve")
     ax.annotate(
