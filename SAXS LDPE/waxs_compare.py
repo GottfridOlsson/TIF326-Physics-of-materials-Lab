@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import plot_functions as p_f
+
+p_f.set_LaTeX_and_CMU(True)
+p_f.set_font_size(11, 9, 9)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
@@ -89,11 +93,13 @@ for direction in ["CD", "MD"]:
             (q_plane+0.005, -0.003),
             alpha=0.5)
 
+    plot_functions.set_LaTeX_and_CMU(True)
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
     ax.set_ylabel("Intensity, (arb. unit)")
     ax.legend()
     ax.set_ylim(-0.005, 0.06)
     ax.set_xlim(1.4, 2.1)
+    plt.show()
 
     fig.tight_layout()
     fig.savefig(f"SAXS LDPE/output/LDPE_{direction}_WAXS.pdf")
