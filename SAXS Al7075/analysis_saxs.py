@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import plot_functions as p_f
+
+p_f.set_LaTeX_and_CMU(True)
+p_f.set_font_size(13, 11.5, 10)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
@@ -31,11 +35,12 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
 
     # Plot fit
     fig = plt.figure(figsize=(8,6))
-    ax = fig.add_subplot(3,3,1)
-    ax.set_title(f"Raw SAXS data")
-    ax.loglog(q_ref, I_ref, label="Reference")
-    ax.loglog(q, I, label=f"Aged, {sample} 2h")
-    ax.loglog(q_fit, I_fit, "k--", label="Fitted curve")
+    ax1 = fig.add_subplot(3,3,1)
+    ax1.set_title(f"Raw SAXS data")
+    ax1.loglog(q_ref, I_ref, label="Reference")
+    ax1.loglog(q, I, label=f"Aged, {sample} 2h")
+    ax1.loglog(q_fit, I_fit, "k--", label="Fitted curve")
+
 
     I_sub = 10**(np.log10(I) - exponential(np.log10(q), A, alpha, C))
 
@@ -52,19 +57,21 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
 
     print(f"{sample}: d = {0.1*d:.1f} nm")
 
-    ax = fig.add_subplot(3,3,(4,9))
-    ax.plot(0, 0, label="Al7075, no aging")
-    ax.plot(q, I_sub, label="Al7075, aged 160C 2h")
-    ax.plot(q_fit, I_gauss, "k--", label="Fitted curve")
-    ax.annotate(
-        f"$q$ = {q_mid:.3f}" + "$\,$Å$^{-1}$\n" +
-        f"$d$ = {0.1*d:.1f}" + "$\,$nm", 
+    ax2 = fig.add_subplot(3,3,(4,9))
+    ax2.plot(0, 0, label="Al7075, no aging")
+    ax2.plot(q, I_sub, label="Al7075, aged 160C 2h")
+    ax2.plot(q_fit, I_gauss, "k--", label="Fitted curve")
+    ax2.annotate(
+        f"$q$ = {q_mid:.3f}" + "$\\,$Å$^{-1}$\n" +
+        f"$d$ = {0.1*d:.1f}" + "$\\,$nm", 
         (q_mid + 0.4*FWHM, max-0.5))
-    ax.set_xlabel("Momentum transfer, $q$ (Å$^{-1}$)")
-    ax.set_ylabel("Intensity (arb. unit)")
-    ax.grid()
-    ax.legend(loc="upper left")
-    ax.set_ylim(0.5, 5)
+    ax2.set_xlabel("Momentum transfer, $q$ (Å$^{-1}$)")
+    ax2.set_ylabel("Intensity (arb. unit)")
+    ax2.grid()
+    ax2.legend(loc="upper left")
+    ax2.set_ylim(0.5, 5)
+
+
 
     fig.tight_layout()
     fig.savefig(f"SAXS Al7075/output/{sample}_Al7075_SAXS.pdf")

@@ -1,9 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import plot_functions as p_f
+
+p_f.set_LaTeX_and_CMU(True)
+p_f.set_font_size(11, 9, 9)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
+
 
 for sample in ["130C", "160C", "190C", "220C", "250C"]:
     
@@ -16,9 +21,9 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
     a = 4.0479
     # FCC structure factor: h, k, l all even or odd
 
-
     fig = plt.figure(figsize=(8,4))
     ax = fig.add_subplot(1,1,1)
+
     ax.set_title(f"{sample}")
     ax.plot(q, I, label="Al7075, Aged 160C 2h")
 

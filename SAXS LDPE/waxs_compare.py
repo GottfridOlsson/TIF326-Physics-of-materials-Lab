@@ -1,13 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import plot_functions as p_f
+
+p_f.set_LaTeX_and_CMU(True)
+p_f.set_font_size(11, 9, 9)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
 
 for direction in ["CD", "MD"]:
 
-    fig = plt.figure(figsize=(8,4))
+    fig = plt.figure(figsize=(p_f.cm_2_inch(16),p_f.cm_2_inch(7)))
         
     # Read SAXS data
     file_deformed = f"SAXS LDPE/data/{direction}_deformed_WAXS.grad"
