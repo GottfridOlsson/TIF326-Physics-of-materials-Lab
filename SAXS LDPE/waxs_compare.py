@@ -90,7 +90,7 @@ for direction in ["CD", "MD"]:
             alpha=0.5)
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
-    ax.set_ylabel("Intensity, (arb. unit)")
+    ax.set_ylabel("Intensity (arb. unit)")
     ax.legend()
     ax.set_ylim(-0.005, 0.06)
     ax.set_xlim(1.4, 2.1)
