@@ -87,7 +87,7 @@ for direction in ["CD", "MD"]:
         h, k, l = plane
         q_plane = 2 * np.pi * np.sqrt((h/a)**2 + (k/b)**2 + (l/c)**2)
 
-        ax.vlines(q_plane, -0.005, 0.06, alpha=0.3)
+        ax.vlines(q_plane, -0.005, 0.06, "k", alpha=0.3)
         ax.annotate(
             f"LDPE ({planes[i][0]}{planes[i][1]}{planes[i][2]})",
             (q_plane+0.005, -0.003),
