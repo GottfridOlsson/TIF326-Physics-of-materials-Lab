@@ -19,7 +19,7 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
 
     fig = plt.figure(figsize=(p_f.cm_2_inch(16),p_f.cm_2_inch(8)))
     ax = fig.add_subplot(1,1,1)
-    ax.set_title(f"{sample}")
+    #ax.set_title(f"{sample}")
     ax.plot(q, I, label="Al7075, aged 160C 2h")
 
     # Aluminium planes
@@ -49,9 +49,9 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
             (4/3) * (h**2 + h * k + k**2) / MgZn2_a**2 + l**2/MgZn2_c**2
         )
         q_plane = 2 * np.pi / d_plane
-        ax.vlines(q_plane, 0, 0.0008+0.00012*plane_no, alpha=0.3)
-        ax.annotate(f"({plane[0]}{plane[1]}{plane[2]}{plane[3]})",
-            (q_plane+0.01, 0.00073+0.00012*plane_no), alpha=0.5)
+        ax.vlines(q_plane, 0, 0.0007+0.00018*plane_no, "k", alpha=0.3)
+        ax.annotate(f"MgZn$_2$({plane[0]}{plane[1]}{plane[2]}{plane[3]})",
+            (q_plane+0.01, 0.0006+0.00018*plane_no), alpha=0.5)
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
     ax.set_ylabel("Intensity, $I$ (arb. unit)")
