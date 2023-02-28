@@ -26,10 +26,10 @@ M = 2.5             #-, Taylor number (given in lab PM)
 f = 0.9             #-, volume fraction Al (estimted from alloy composition)
 b = a/2             #m, Burger vector for FCC ({111} planes)
 L = 12345           #m, distance between percipitated particles # TODO
-r = 12345           #m, radius of percipitated particles        # TODO
 gamma = 20*1e-3     #J m^-2, particle surface energy
 alpha = 0.15        #-, given by Canvas
-d = 2*r
+d = 8.7*1e-9        # m, diameter of percipitated particles
+r = d/2         
 N = 12345           # m^-3, number density of percipitated particles # TODO 
 
 # Calculation and write to file

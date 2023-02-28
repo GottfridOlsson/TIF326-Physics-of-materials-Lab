@@ -1,9 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import plot_functions as p_f
+
+p_f.set_LaTeX_and_CMU(True)
+p_f.set_font_size(11, 9, 9)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
+
 
 for sample in ["130C", "160C", "190C", "220C", "250C"]:
     file = f"SAXS Al7075/data/{sample}_Al7075_WAXS.grad"
@@ -87,8 +92,9 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
         q_planes[i] = 2 * np.pi * np.sqrt(h**2 + k**2 + l**2) / a
 
     # Plot
-    fig = plt.figure()
+    fig = plt.figure(figsize=(16/2.54,9/2.54))
     ax = fig.add_subplot(1,1,1)
+
     ax.set_title(f"{sample}")
     ax.plot(q, I, label="WAXS data")
     ax.plot(q[i_gauss_tot], I[i_gauss_tot], "r.", label="WAXS data used for fit")
@@ -111,7 +117,7 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
             "k--",
             label=label)
         ax.annotate(
-            f"{mu:.3f} $\pm$ {sigma:.3f}",
+            f"{mu:.3f}$\\,\\pm\\,${sigma:.3f}",
             (mu-0.01, A_fit[i] + C_fit[i] + 0.00002))
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
