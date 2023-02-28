@@ -25,12 +25,14 @@ G = 26.9*1e9        #Pa, shear modulus
 M = 2.5             #-, Taylor number (given in lab PM)
 f = 0.9             #-, volume fraction Al (estimted from alloy composition)
 b = a/2             #m, Burger vector for FCC ({111} planes)
-L = 12345           #m, distance between percipitated particles # TODO
-r = 12345           #m, radius of percipitated particles        # TODO
+d = 8.7e-9          #m, diameter of percipitated particles (from SAXS)
 gamma = 20*1e-3     #J m^-2, particle surface energy
 alpha = 0.15        #-, given by Canvas
-d = 2*r
-N = 12345           # m^-3, number density of percipitated particles # TODO 
+r = d/2             #m, radius of percipitated particles
+
+x = 1-f                         #-, volume fraction of percipitate
+L = d * (np.pi/(6*x))**(1/3)    #m, distance between percipitated particles
+N = L**-3                       #m^-3, number density of percipitated particles
 
 # Calculation and write to file
 Delta_sigma_Orowan = Delta_sigma_bend_dislocation_Orowan(M, G, b, L, r)*1e-6 #MPa
@@ -39,5 +41,5 @@ Delta_sigma_new = Delta_sigma_Canvas(alpha, M, G, b, N, d)*1e-6              #MP
 
 with open('Al7075 calculation/TIF326_Lab_increased_sigma_Al7075.txt', 'w') as file:
     file.write(f"Delta_sigma_bend_dislocation_Orowan: {Delta_sigma_Orowan:.2e} MPa\n")
-    file.write(f"Delta_sigma_shear_dislocation:       {Delta_sigma_shear:.2e} MPa")
+    file.write(f"Delta_sigma_shear_dislocation:       {Delta_sigma_shear:.2e} MPa\n")
     file.write(f"Delta_sigma_Canvas:                  {Delta_sigma_new:.2e} MPa")
