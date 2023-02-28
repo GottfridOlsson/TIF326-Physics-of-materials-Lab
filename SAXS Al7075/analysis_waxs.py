@@ -17,7 +17,7 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
     q = data[:,0]
     I = data[:,1]
 
-    fig = plt.figure(figsize=(8,4))
+    fig = plt.figure(figsize=(p_f.cm_2_inch(16),p_f.cm_2_inch(8)))
     ax = fig.add_subplot(1,1,1)
     ax.set_title(f"{sample}")
     ax.plot(q, I, label="Al7075, aged 160C 2h")
@@ -39,9 +39,9 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
     MgZn2_c = 8.566
     MgZn2_planes = [
         [0, 0, 0, 1],
-        [1, 0,-1, 1],
+        [1, 0,"$\\bar{1}$", 1],
         [0, 0, 0, 2],
-        [1, 0,-1, 0],
+        [1, 0,"$\\bar{1}$", 0],
     ]
     for plane_no, plane in enumerate(MgZn2_planes):
         h, k, i, l = plane
@@ -54,9 +54,9 @@ for sample in ["130C", "160C", "190C", "220C", "250C"]:
             (q_plane+0.01, 0.00073+0.00012*plane_no), alpha=0.5)
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
-    ax.set_ylabel("Intensity, $I$ (A.U.)")
+    ax.set_ylabel("Intensity, $I$ (arb. unit)")
     ax.legend()
     ax.set_ylim(0, 0.0015)
-    #ax.set_xlim(0.5, 2.0)
-    #fig.tight_layout()
+    ax.set_xlim(0.0, 2.0)
+    fig.tight_layout()
     fig.savefig(f"SAXS Al7075/output/{sample}_Al7075_WAXS.pdf")
