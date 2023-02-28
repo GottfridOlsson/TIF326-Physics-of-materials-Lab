@@ -89,9 +89,20 @@ for direction in ["CD", "MD"]:
 
         ax.vlines(q_plane, -0.005, 0.06, alpha=0.3)
         ax.annotate(
-            f"({planes[i][0]}{planes[i][1]}{planes[i][2]})",
+            f"LDPE ({planes[i][0]}{planes[i][1]}{planes[i][2]})",
             (q_plane+0.005, -0.003),
             alpha=0.5)
+    
+    a = 4.58
+    b = 4.58
+    c = 2.95
+    h, k, l = (1, 1 ,0)
+    q_plane = 2 * np.pi * np.sqrt((h/a)**2 + (k/b)**2 + (l/c)**2)
+    ax.vlines(q_plane, -0.005, 0.06, alpha=0.3)
+    ax.annotate(
+        f"TiO$_2$ ({h}{k}{l})",
+        (q_plane+0.005, -0.003),
+        alpha=0.5)
 
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
     ax.set_ylabel("Intensity (arb. unit)")
