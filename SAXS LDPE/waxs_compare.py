@@ -11,7 +11,7 @@ def gaussian(x, A, mu, sigma, C):
 
 for direction in ["CD", "MD"]:
 
-    fig = plt.figure(figsize=(8,4))
+    fig = plt.figure(figsize=(p_f.cm_2_inch(16),p_f.cm_2_inch(7)))
         
     # Read SAXS data
     file_deformed = f"SAXS LDPE/data/{direction}_deformed_WAXS.grad"
@@ -93,13 +93,11 @@ for direction in ["CD", "MD"]:
             (q_plane+0.005, -0.003),
             alpha=0.5)
 
-    plot_functions.set_LaTeX_and_CMU(True)
     ax.set_xlabel("Momentum transfer, $q$ "  + "(Å$^{-1}$)")
     ax.set_ylabel("Intensity, (arb. unit)")
     ax.legend()
     ax.set_ylim(-0.005, 0.06)
     ax.set_xlim(1.4, 2.1)
-    plt.show()
 
     fig.tight_layout()
     fig.savefig(f"SAXS LDPE/output/LDPE_{direction}_WAXS.pdf")
