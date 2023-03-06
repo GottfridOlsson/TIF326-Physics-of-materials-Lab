@@ -20,7 +20,7 @@ def Delta_sigma_Canvas(alpha, M, G, b, N, d):
 
 
 # Material properties Al 7075
-a = 4.04*1e-10      #m, FCC lattice parameter
+a = 4.04e-10        #m, FCC lattice parameter
 G = 26.9e9          #Pa, shear modulus of Al
 M = 2.5             #-, Taylor number (given in lab PM)
 x = 0.9             #-, volume fraction Al (estimted from alloy composition)
@@ -31,7 +31,7 @@ alpha = 0.15        #-, given by Canvas
 r = d/2             #m, radius of percipitated particles
 
 f = 1-x                         #-, volume fraction of percipitated particles
-L = d * (np.pi/(6*x))**(1/3)    #m, distance between percipitated particles
+L = d * (np.pi/(6*f))**(1/3)    #m, distance between percipitated particles
 N = L**-3                       #m^-3, number density of percipitated particles
 
 # Calculation and write to file
