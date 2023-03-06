@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import plot_functions as p_f
 
-p_f.set_LaTeX_and_CMU(True)
-p_f.set_font_size(11, 9, 9)
+#p_f.set_LaTeX_and_CMU(True)
+#p_f.set_font_size(11, 9, 9)
 
 def gaussian(x, A, mu, sigma, C):
     return C + A * np.exp(-0.5*((x - mu) / sigma)**2)
@@ -79,7 +79,6 @@ for direction in ["CD", "MD"]:
     planes = [
         [2, 0, 0],
         [1, 1, 0],
-        [2, 1, 0],
     ]
     q_planes = np.zeros(len(planes))
 
@@ -98,7 +97,7 @@ for direction in ["CD", "MD"]:
     c = 2.95
     h, k, l = (1, 1 ,0)
     q_plane = 2 * np.pi * np.sqrt((h/a)**2 + (k/b)**2 + (l/c)**2)
-    ax.vlines(q_plane, -0.005, 0.06, alpha=0.3)
+    ax.vlines(q_plane, -0.005, 0.06, "k", alpha=0.3)
     ax.annotate(
         f"TiO$_2$ ({h}{k}{l})",
         (q_plane+0.005, -0.003),
@@ -110,5 +109,5 @@ for direction in ["CD", "MD"]:
     ax.set_ylim(-0.005, 0.06)
     ax.set_xlim(1.4, 2.1)
 
-    fig.tight_layout()
+    #fig.tight_layout()
     fig.savefig(f"SAXS LDPE/output/LDPE_{direction}_WAXS.pdf")
